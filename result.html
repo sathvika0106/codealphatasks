@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Result</title>
+    <style>
+        /* Reset or Normalize */
+        @import 'normalize.css';
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f8ff; /* Light blue background */
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Add position relative to the container for absolute positioning of sprinklers */
+        }
+
+        /* Heading styles */
+        h1 {
+            color: #333; /* Dark gray text color */
+        }
+
+        /* Age result styles */
+        #ageResult {
+            font-size: 24px;
+            color: #0074d9; /* Blue text color */
+            margin-top: 20px;
+            animation: celebrate 2s infinite; /* Apply the celebrate animation */
+        }
+
+        /* Celebration animation */
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Sprinkler styles */
+        .sprinkler {
+            position: absolute;
+            border-radius: 50%; /* Circle shape */
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        /* Sprinkler animations */
+        @keyframes sprinkle {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes ripple {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(-100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(200px); opacity: 0; }
+        }
+
+        /* Positioning of sprinklers */
+        .sprinkler:nth-child(1) { left: 20%; animation: sprinkle 1s ease-in-out infinite; }
+        .sprinkler:nth-child(2) { left: 40%; animation: ripple 1.5s ease-in-out infinite; }
+        .sprinkler:nth-child(3) { left: 60%; animation: bounce 1.2s ease-in-out infinite; }
+        .sprinkler:nth-child(4) { left: 80%; animation: sprinkle 1.3s ease-in-out infinite; }
+
+        /* Sprinkler color variations */
+        .sprinkler:nth-child(odd) { background-color: #ff00ff; }
+        .sprinkler:nth-child(even) { background-color: #00ff00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Result</h1>
+        <p id="ageResult"></p>
+        <!-- Sprinklers -->
+        <div class="sprinkler"></div>
+        <div class="sprinkler"></div>
+        <div class="sprinkler"></div>
+        <div class="sprinkler"></div>
+    </div>
+
+    <script>
+        // Get age from query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const age = urlParams.get('age');
+
+        // Display age result
+        const ageResultElement = document.getElementById("ageResult");
+        ageResultElement.textContent = `Your age is ${age} years old.`;
+    </script>
+</body>
+</html>
